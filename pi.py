@@ -29,6 +29,7 @@ sheet2 = client.open("Occupod").worksheet('BathroomState')
 ##########################################################################
 
 try:
+	print("Welcome you are updating the googel sheet.")
 	while True:
 		arduino = serial.Serial("/dev/ttyACM0", 9600) # make sure you write correct serial Pi -"/dev/ttyACM0" Mac -/dev/cu.usbmodem14101
 		data = arduino.readline().decode()
@@ -38,8 +39,6 @@ try:
 		humidity = pieces[2]
 		motion = pieces[3]
 		currentTime = datetime.datetime.now()
-		# int realtime = currentTime.strftime("%X")
-		# print(currentTime.strftime("%X"), lights, temperature, humidity, motion)
 		if (lights >="20" and humidity >= "50" and temperature >= "20"):
 			bathroomState = [currentTime.strftime("%X"), "Occupied - Shower"]
 			sheet2.append_row(bathroomState)
