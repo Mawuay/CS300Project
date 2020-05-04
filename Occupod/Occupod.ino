@@ -1,3 +1,5 @@
+#include <Adafruit_Sensor.h>
+
 
 /* 
  *************************************************************************************************************************
@@ -85,10 +87,11 @@ int detectTemperature(){
  */
 int detectHumidity(){
   int bathroomHumidity = TEMPHUMSENSOR.readHumidity();
-  Serial.print("Humidity: ");
-  Serial.print(bathroomHumidity);
-  Serial.print(" %");
-  Serial.print("\t");
+ Serial.print("Humidity: ");
+ Serial.print(bathroomHumidity);
+ Serial.print(" %");
+ Serial.print("\t");
+// Serial.print("\n");
   return bathroomHumidity; 
  }
 
@@ -100,9 +103,11 @@ int detectHumidity(){
 unsigned detectMotion(){
    VALUE = digitalRead(MOTIONSEN);       // read input value
   if (VALUE == MOTIONSTATE) {            // check if the input is HIGH
-      Serial.println(VALUE);
+     Serial.print("Motion: ");
+     Serial.println(VALUE);
   } else {
-      Serial.println(VALUE);
+     Serial.print("Motion: ");
+     Serial.println(VALUE);
   } 
   return VALUE;
  }
@@ -115,31 +120,13 @@ unsigned detectMotion(){
  */
 int detectLights(){
   analogValueOfLights = analogRead(lightSensorPin);
+  Serial.print("Light intensity: " );
   Serial.print(analogValueOfLights);
   Serial.print("\t");
   return analogValueOfLights;
 }
 
 
-/* 
- * detects if motion has occured in the  bathroom
- * @param none
- * Return: void
- */
-//
-//int detectSound(){
-//  int val;                        //define digital variable val 
-//  val=digitalRead(buttonpin);     //read the value of the digital interface 3 assigned to val 
-//  if(val==HIGH){ 
-//   Serial.println("HIGH"); 
-//    }else{
-//      Serial.println("LOW"); 
-//   }
-//  sensorValue = analogRead(soundSensorPin); 
-//  //delay(sensorValue); 
-//  delay(sensorValue); 
-//  Serial.println(sensorValue, DEC); 
-//}
 
 
 
@@ -157,19 +144,17 @@ void setup() {
 void loop() {
   // Wait a few seconds between measurements.
   //delay(5000);
-  //int  light = detectLights();
-  //int temp = detectTemperature();
-  //int humid = detectHumidity();
-  //unsigned motion = detectMotion();
-//  int sound = detectSound();
-  if (detectLights() >= 20 && detectHumidity() >= 50 && detectTemperature() >= 20) {
-   Serial.println("Occupied - someones taking a shower");
-  } else if (detectLights() >= 20 && detectHumidity() <= 50 && detectMotion() > 0){
-   Serial.println("Occupied - someones on the toilet");
-  } else {
-   Serial.println("Vaccant"); 
-  }
-
-  delay(500);               // 60 sec delay...
+  int  light = detectLights();
+  int temp = detectTemperature();
+  int humid = detectHumidity();
+  unsigned motion = detectMotion();
+  // if (detectLights() >= 20 && detectHumidity() >= 50 && detectTemperature() >= 20) {
+  //  Serial.println("Shower");
+  // } else if (detectLights() >= 20 && detectHumidity() <= 50 && detectMotion() > 0){
+  //  Serial.println("Toilet");
+  // } else {
+  //  Serial.println("Vaccant"); 
+  // }
+  delay(10000);               // 60 sec delay...
   
 }
