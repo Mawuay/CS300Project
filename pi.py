@@ -6,8 +6,8 @@
 # Professor: Dereck Schuurman
 #
 #
-# Reads serial data from the sensors on the arduino and stores them in an sql data base
-# uses data from the SQL database to detect if the bathroom is occupied or not.
+# Reads serial data from the sensors on the arduino and stores them in an google sheets
+# uses data from the google sheets to detect if the bathroom is occupied or not.
 # intercaes with the google home.   
 #############################################################################################
 from pprint import pprint
