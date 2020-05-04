@@ -13,32 +13,45 @@
 from pprint import pprint
 import gspread 
 from oauth2client.service_account import ServiceAccountCredentials
-# import serial
-# import time 
-# import datetime
+import serial
+import time 
+import datetime
 
 ##########################################################################
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", SCOPES)
 client = gspread.authorize(creds)
 sheet = client.open("Occupod").sheet1
-data = sheet.get_all_records()
-pprint(data)
+sheet2 = client.open("Occupod").worksheet('BathroomState')
+
 
 
 ##########################################################################
 
+try:
+	while True:
+		arduino = serial.Serial("/dev/ttyACM0", 9600) # make sure you write correct serial Pi -"/dev/ttyACM0" Mac -/dev/cu.usbmodem14101
+		data = arduino.readline().decode()
+		pieces = data.split("\t")
+		lights = pieces[0]
+		temperature = pieces[1]
+		humidity = pieces[2]
+		motion = pieces[3]
+		currentTime = datetime.datetime.now()
+		# int realtime = currentTime.strftime("%X")
+		# print(currentTime.strftime("%X"), lights, temperature, humidity, motion)
+		if (lights >="20" and humidity >= "50" and temperature >= "20"):
+			bathroomState = [currentTime.strftime("%X"), "Occupied - Shower"]
+			sheet2.append_row(bathroomState)
+		elif int(lights) >= 20 and int(humidity) <= 40 and int(motion) > 0:
+			bathroomState = [currentTime.strftime("%X"), "Occupied - Toilet"]
+			sheet2.append_row(bathroomState)
+		else:
+			bathroomState = [currentTime.strftime("%X"), "Vaccant"]
+			sheet2.append_row(bathroomState)
 
-# try:
-# 	while True:
-# 		arduino = serial.Serial("/dev/ttyACM0", 9600) # make sure you write correct serial
-# 		data = arduino.readline().decode()
-# 		pieces =data.split("\t")
-# 		lights = pieces[0]
-# 		temperature = pieces[1]
-# 		humidity = pieces[2]
-# 		motion = pieces[3]
-# 		print(lights, temperature, humidity, motion)
-# except KeyboardInterrupt:
-# 	print ("Done")
+		appendRow = [currentTime.strftime("%X"),int(lights), float(temperature) , (humidity) ,motion]
+		sheet.append_row(appendRow)
+except KeyboardInterrupt:
+	print ("Done")
 
