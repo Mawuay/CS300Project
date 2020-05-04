@@ -72,9 +72,9 @@ DHT TEMPHUMSENSOR(DHTPIN, DHTTYPE);
  */
 int detectTemperature(){
   int bathroomTemperature = TEMPHUMSENSOR.readTemperature();
-  Serial.print("Temperature: ");
+//  Serial.print("Temperature: ");
   Serial.print(bathroomTemperature);
-  Serial.print("°C");
+//  Serial.print("°C");
   Serial.print("\t"); 
   return bathroomTemperature;
  }
@@ -87,9 +87,9 @@ int detectTemperature(){
  */
 int detectHumidity(){
   int bathroomHumidity = TEMPHUMSENSOR.readHumidity();
- Serial.print("Humidity: ");
+// Serial.print("Humidity: ");
  Serial.print(bathroomHumidity);
- Serial.print(" %");
+// Serial.print(" %");
  Serial.print("\t");
 // Serial.print("\n");
   return bathroomHumidity; 
@@ -103,10 +103,10 @@ int detectHumidity(){
 unsigned detectMotion(){
    VALUE = digitalRead(MOTIONSEN);       // read input value
   if (VALUE == MOTIONSTATE) {            // check if the input is HIGH
-     Serial.print("Motion: ");
+//     Serial.print("Motion: ");
      Serial.println(VALUE);
   } else {
-     Serial.print("Motion: ");
+//     Serial.print("Motion: ");
      Serial.println(VALUE);
   } 
   return VALUE;
@@ -120,7 +120,7 @@ unsigned detectMotion(){
  */
 int detectLights(){
   analogValueOfLights = analogRead(lightSensorPin);
-  Serial.print("Light intensity: " );
+//  Serial.print("Light intensity: " );
   Serial.print(analogValueOfLights);
   Serial.print("\t");
   return analogValueOfLights;
