@@ -10,14 +10,14 @@
 # uses data from the SQL database to detect if the bathroom is occupied or not.
 # intercaes with the google home.   
 #############################################################################################
-
-import serial
-import time
-from __future__ import print_function  
+from __future__ import print_function 
 from googleapiclient.discovery import build  
 from httplib2 import Http  
 from oauth2client import file, client, tools  
-from oauth2client.service_account import ServiceAccountCredentials  
+from oauth2client.service_account import ServiceAccountCredentials
+import serial
+import time 
+ 
 import datetime
 
 # My Spreadsheet ID ... See google documentation on how to derive this
@@ -54,21 +54,17 @@ def main():
        reads the serial input from teh aruino hopefully with the three sensors, then
        call update_sheets method to add that sensor data to the spreadsheet
     """
-	arduino = serial.Serial("/dev/ttyACM0", 9600) # make sure you write correct serial
-	data = arduino.readline().decode()
-	pieces =data.split("\t")
-	lights = pieces[0]
-	temperature = pieces[1]
-	humidity = pieces[2]
-	motion = pieces[3]
-	# bme = bme280.Bme280()
-    # bme.set_mode(bme280.MODE_FORCED)
-    # tempC, pressure, humidity = bme.get_data()
-    # pressure = pressure/100.
+    arduino = serial.Serial("/dev/ttyACM0", 9600)
+    data = arduino.readline().decode()
+    pieces =data.split("\t")
+    lights = pieces[0]
+    temperature = pieces[1]
+    humidity = pieces[2]
+    motion = pieces[3]
     print ('Light Intensity: %f hPa' % lights)
-	print ('Temperature: %f °C' % 	temperature)
+    print ('Temperature: %f °C' % 	temperature)
     print ('Humidity: %f %%rH' % humidity)
-	print ('Motion: %f hPa' % motion)
+    print ('Motion: %f hPa' % motion)
 
     update_sheet("Occupod", lights, temperature, humidity, motion)
 
