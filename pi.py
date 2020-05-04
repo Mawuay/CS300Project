@@ -18,7 +18,7 @@ import time
 import datetime
 
 ##########################################################################
-SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
+SCOPES = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/sprea...,"https://www.googleapis.com/auth/drive...","https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name('creds.json', SCOPES)
 client = gspread.authorize(creds)
 sheet = client.open("Occupod").sheet1
