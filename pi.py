@@ -43,13 +43,13 @@ try:
 			bathroomState = [currentTime.strftime("%X"), "Occupied - Shower"]
 			sheet2.append_row(bathroomState)
 		elif int(lights) >= 20 and int(humidity) <= 40 and int(motion) > 0:
-			bathroomState = [currentTime, "Occupied - Toilet"]
+			bathroomState = [currentTime.strftime("%X"), "Occupied - Toilet"]
 			sheet2.append_row(bathroomState)
 		else:
-			bathroomState = [currentTime, "Vaccant"]
+			bathroomState = [currentTime.strftime("%X"), "Vaccant"]
 			sheet2.append_row(bathroomState)
 
-		appendRow = [currentTime, int(lights), float(temperature) , (humidity) ,motion]
+		appendRow = [currentTime.strftime("%X"), int(lights), float(temperature) , (humidity) ,motion]
 		sheet.append_row(appendRow)
 except KeyboardInterrupt:
 	print ("Done")
