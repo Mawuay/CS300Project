@@ -12,19 +12,15 @@ Privacy was of paramount concern in the design of the Occupod project. It was of
 Security
 Another aspect of the project was security. It was decided that connecting the obtained sensor data to a secure google sheet was the best way of implementing the security for this project for the following reasons: 1. Low probability of server side attacks. The only way to intercept the data is with the unique json value that allows the python program to interface with the google sheet. 2. Google's user authentication system on the user side added an extra layer of security.
 
-State Diagram
 
 
-Figure 1. The state diagram for the Occupod system.
-Fritzing Diagram ![alt text](https://github.com/Mawuay/CS300Project/blob/master/Images/Occupod_diagram.png)
+Fritzing Diagram: ![alt text](https://github.com/Mawuay/CS300Project/blob/master/Images/Occupod_diagram.png)
+
+A fritzing diagram of the hardware and a photo of the finished prototype.
 
 
-
-Figure 2&3. A fritzing diagram of the hardware and a photo of the finished prototype.
-
-     
-Figures 4 & 5 A photo of both of the tables updated during the program.
+Completed Prototype: ![alt text](https://github.com/Mawuay/CS300Project/blob/master/Images/Occupod.jpg)
 
 
-Reflection
+Reflection:
 Overall this was a very enjoyable project. As the final project for the class I was encouraged to use a wide variety of the techniques that we had learned throughout the course in order to complete my project. In addition having the project open ended in the sense where students were allowed to use different property hardware drew me back to one of the preliminary lectures we had about determining the best hardware for the project. In an ideal world I might have done some things differently with regards to parts and functionality, but due to the current teaching and learning paradigm we are in I had to devise cleaver alternatives. On a whole I believe this was an amazingly well instructed class.
