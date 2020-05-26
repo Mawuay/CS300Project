@@ -16,7 +16,7 @@ State Diagram
 
 
 Figure 1. The state diagram for the Occupod system.
-***Fritzing Diagram***(https://github.com/Mawuay/CS300Project/blob/master/Images/Occupod_diagram.png)
+Fritzing Diagram ![alt text](https://github.com/Mawuay/CS300Project/blob/master/Images/Occupod_diagram.png)
 
 
 
