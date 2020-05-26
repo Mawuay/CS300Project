@@ -16,7 +16,8 @@ State Diagram
 
 
 Figure 1. The state diagram for the Occupod system.
-Fritzing Diagram
+Fritzing Diagram(https://github.com/Mawuay/CS300Project/Images/Occupod_diagram)
+
 
 
 Figure 2&3. A fritzing diagram of the hardware and a photo of the finished prototype.
