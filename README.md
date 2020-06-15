@@ -1,4 +1,4 @@
-# CS300Project
+# CS300Project - Occupod
 Project summary
 After some research it became apparent that students at Calvin University who lived on campus (in the dorms or KE apartments) had no way to determine if their housemates/roommates were in the bathroom or not. In order to avoid being walked in on, some students resort to running the tap/shower to provide auditory feedback of their presence in the bathroom. While effective this leads to gallons of water being wasted each day.
 
